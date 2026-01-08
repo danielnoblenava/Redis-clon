@@ -30,7 +30,7 @@ int main(){
 	char msg[] = "hello";
 	write(fd, msg, strlen(msg));
 	char rbuf[64];
-	ssize_t n = read(f, rbuf, sizeof(rbuf)-1);
+	ssize_t n = read(fd, rbuf, sizeof(rbuf)-1);
 	if(n < 0){
 		die("read");
 	}
