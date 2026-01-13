@@ -76,7 +76,7 @@ static int32_t one_request(int connfd){
 	}
 
 	//do something
-	fprintf(stderr, "client says: %. *s\n", len, &rbuf[4]);
+	fprintf(stderr, "client says: %.*s\n", len, &rbuf[4]);
 	
 	// reply using the same protocol
 	const char reply[] = "jijijaja";
@@ -127,6 +127,7 @@ int main(){
     rv = listen(fd, SOMAXCONN);
     if (rv) { die("listen()"); }
 
+	//To acutally write/read bytes from/to a TCP_socket you must do it in a loop.
     while(true){
         //acept
         struct sockaddr_in client_addr = {};
