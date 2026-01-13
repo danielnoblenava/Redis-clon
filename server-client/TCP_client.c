@@ -82,7 +82,7 @@ static int32_t query(int fd, const char *text){
 		return err;
 	}
 	// do something
-	printf("server says: %s. *s\n", len, &rbuf[4]);
+	printf("server says: %.*s\n", len, &rbuf[4]);
 	return 0;
 }
 
@@ -105,6 +105,16 @@ int main(){
 	//multiple requests
 	
 	int32_t err = query(fd, "hello1");
+	if (err){
+		goto L_DONE;
+	}
+
+	err = query(fd, "hello2");
+	if (err){
+		goto L_DONE;
+	}
+
+	err = query(fd, "hello3");
 	if (err){
 		goto L_DONE;
 	}
